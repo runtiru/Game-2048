@@ -12,7 +12,7 @@ EXPOSE 80
 CMD ["/usr/sbin/nginx", "-c", "/etc/nginx/nginx.conf"]
 
 ```bash
-docker image build -t tiru-2048
+docker image build -t tiru-2048 .
 docker container run -d -p 80:80 <REPOSITORY or image ID>
 ```
 
