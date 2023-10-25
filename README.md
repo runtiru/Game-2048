@@ -1,3 +1,21 @@
+# Dockerfile 
+FROM ubuntu:18.04
+RUN apt-get update
+RUN apt-get install -y nginx zip curl
+RUN echo "daemon off;" >> /etc/nginx/nginx.conf
+RUN curl -o /var/www/html/master.zip -L https://codeload.github.com/gabrielecirulli/2048/zip/master
+RUN cd /var/www/html/ && \
+    unzip master.zip && \
+    mv 2048-master/* . && \
+    rm -rf 2048-master master.zip
+EXPOSE 80
+CMD ["/usr/sbin/nginx", "-c", "/etc/nginx/nginx.conf"]
+
+```bash
+docker image build -t tiru-2048
+docker container run -d -p 80:80 <REPOSITORY or image ID>
+```
+
 # 2048
 A small clone of [1024](https://play.google.com/store/apps/details?id=com.veewo.a1024), based on [Saming's 2048](http://saming.fr/p/2048/) (also a clone).
 
