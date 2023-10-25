@@ -1,4 +1,5 @@
 # Dockerfile 
+```bash
 FROM ubuntu:18.04
 RUN apt-get update
 RUN apt-get install -y nginx zip curl
@@ -10,9 +11,9 @@ RUN cd /var/www/html/ && \
     rm -rf 2048-master master.zip
 EXPOSE 80
 CMD ["/usr/sbin/nginx", "-c", "/etc/nginx/nginx.conf"]
-
+```
 ```bash
-docker image build -t tiru-2048 .
+docker image build -t tiru-2048 . < . content>
 docker container run -d -p 80:80 <REPOSITORY or image ID>
 ```
 
